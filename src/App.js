@@ -17,7 +17,6 @@ class App extends React.Component {
         <h1>
           {this.state.count}
         </h1>
-        {/* <button>タグ内でonClickイベントを追加してください */}
         <button onClick={()=>{this.handleClick()}}>+</button>
         
       </div>
