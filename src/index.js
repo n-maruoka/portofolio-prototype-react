@@ -1,12 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-//import { createStore, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'react-router-redux';
 import { createBrowserHistory } from 'history';
 import './index.css';
 import App from './App';
-// import * as reducers from './reducers';
 import createStore from './createStore';
 
 // create instance of history 

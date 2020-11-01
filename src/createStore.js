@@ -1,8 +1,7 @@
 import {
     // 名前の重複を避けるために別名でimportする
     createStore as reduxCreateStore,
-    combineReducers,
-    applyMiddleware
+    combineReducers
   } from 'redux';
   import { routerReducer } from 'react-router-redux';
   
