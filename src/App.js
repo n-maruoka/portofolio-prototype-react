@@ -11,17 +11,53 @@ import './App.css';
 //   }
 // }
 
+function LoginButton(props) {
+  return (
+    <button onClick={props.onClick}>
+      Login
+    </button>
+  );
+}
+
+function LogoutButton(props) {
+  return (
+    <button onClick={props.onClick}>
+      Logout
+    </button>
+  );
+}
+
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {count: 0};
+    this.handleLoginClick = this.handleLoginClick.bind(this);
+    this.handleLogoutClick = this.handleLogoutClick.bind(this);
+    this.state = {count: 0, isLoggedIn: false};
+    
   }
   
   handleClick(){
+    console.log('handleClick');
     this.setState({count: this.state.count + 1});
   }
   
+  handleLoginClick() {
+    this.setState({isLoggedIn: true});
+  }
+
+  handleLogoutClick() {
+    this.setState({isLoggedIn: false});
+  }
+
   render() {
+    const isLoggedIn = this.state.isLoggedIn;
+    let buttonLogInOut;
+    if (isLoggedIn) {
+      buttonLogInOut = <LogoutButton onClick={this.handleLogoutClick} />;
+    } else {
+      buttonLogInOut = <LoginButton onClick={this.handleLoginClick} />;
+    }
+
     return (
       <React.Fragment>
         <div>
@@ -31,9 +67,13 @@ class App extends Component {
           <button onClick={()=>{this.handleClick()}}>+</button>
         </div>
 
+        <div>
+          <p></p>
+          {buttonLogInOut}
+          {this.state.isLoggedIn &&  <h2>test</h2> }          
+        </div>
       
         <div className="App">
-
           <BrowserRouter>
             <ul>
               {/* カテゴリ名・IDはハードコート */}
@@ -44,7 +84,6 @@ class App extends Component {
                 <li><Link to="/category/2502">パソコン、周辺機器</Link></li>
                 <li><Link to="/category/10002">本、雑誌、コミック</Link></li>
             </ul>
-
             <Switch>
               <Route
                 key="home"
