@@ -36,3 +36,21 @@
     transform: rotate(360deg);
   }
 }
+
+details {
+  height: 10px;
+  transition: .5s;
+}
+details[open] {
+  height: 80px;
+  background: #c3f6ff;
+}
+summary {
+  cursor: pointer;
+  transition: 0.2s; /* 変化を滑らかに */
+}
+/* ホバー時のスタイル */
+summary:hover {
+  cursor: pointer; /* カーソルを指マークに */
+  background-color: #EFEFEF;
+}

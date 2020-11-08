@@ -27,20 +27,43 @@ function LogoutButton(props) {
   );
 }
 
+function AccordionOpen(props) {
+  return (
+    <button onClick={props.onClick}>
+      Open
+    </button>
+  );
+}
+
+function AccordionClose(props) {
+  return (
+    <button onClick={props.onClick}>
+      Close
+    </button>
+  );
+}
+
 class App extends Component {
   constructor(props) {
     super(props);
     this.handleLoginClick = this.handleLoginClick.bind(this);
     this.handleLogoutClick = this.handleLogoutClick.bind(this);
-    this.state = {count: 0, isLoggedIn: false};
-    
+    this.handleAccordionOpen = this.handleAccordionOpen.bind(this);
+    this.handleAccordionClose = this.handleAccordionClose.bind(this);
+    this.state = {
+      count: 0, 
+      isLoggedIn: false,
+      isAccordionOpen: false,
+    };
   }
   
+  /* counter */
   handleClick(){
     console.log('handleClick');
     this.setState({count: this.state.count + 1});
   }
   
+  /* Login btn */
   handleLoginClick() {
     this.setState({isLoggedIn: true});
   }
@@ -48,7 +71,16 @@ class App extends Component {
   handleLogoutClick() {
     this.setState({isLoggedIn: false});
   }
+  
+  /* Accordion btn */
+  handleAccordionOpen() {
+    this.setState({isAccordionOpen: true});
+  }
 
+  handleAccordionClose() {
+    this.setState({isAccordionOpen: false});
+  }
+  
   render() {
     const isLoggedIn = this.state.isLoggedIn;
     let buttonLogInOut;
@@ -57,6 +89,17 @@ class App extends Component {
     } else {
       buttonLogInOut = <LoginButton onClick={this.handleLoginClick} />;
     }
+
+    const isAccordionOpen = this.state.isAccordionOpen;
+    let accBtn, acc;
+    if (isAccordionOpen) {
+      accBtn = <AccordionClose onClick={this.handleAccordionClose} />;
+      acc = <details open><summary>HTMLって何の略？</summary><p>「Hyper Text Markup Language」の略です。</p></details>;
+    } else {
+      // accBtn = <AccordionOpen onClick={this.handleAccordionOpen} />;
+      accBtn = <AccordionOpen onClick={this.handleAccordionOpen} />;
+      acc = <details><summary>HTMLって何の略？</summary><p>最初は閉じていますよ</p></details>;
+    }   
 
     return (
       <React.Fragment>
@@ -70,7 +113,20 @@ class App extends Component {
         <div>
           <p></p>
           {buttonLogInOut}
-          {this.state.isLoggedIn &&  <h2>test</h2> }          
+          {this.state.isLoggIn && <h2>test</h2> }          
+        </div>
+
+        <div>
+          <p></p>
+          <div>{accBtn}</div>
+          <p></p>
+          <div>{acc}</div>
+          <p></p>
+          <div>{acc}</div>
+          <p></p>
+          <div>{acc}</div>
+          <p></p>
+          <div>{acc}</div>
         </div>
       
         <div className="App">
