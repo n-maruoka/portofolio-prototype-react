@@ -1,13 +1,5 @@
 import React, {Component} from 'react';
-//import { Route, Link, Switch, Redirect } from 'react-router-dom';
-// import { Route, Link, Switch } from 'react-router-dom';
-import { Route } from 'react-router-dom';
-import { Link } from 'react-router-dom';
-import { Switch } from 'react-router-dom';
-import { BrowserRouter} from 'react-router-dom';
-import { Redirect } from 'react-router-dom';
-// import { ConnectedRouter } from 'connected-react-router';
-
+import { BrowserRouter, Route, Link, Switch, Redirect } from 'react-router-dom';
 import Ranking from './components/Ranking';
 import RankingDummy from './components/Ranking-dummy';
 import './App.css';
